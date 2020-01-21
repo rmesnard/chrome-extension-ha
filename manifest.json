@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Modify CSS and HTML",
+  "version": "1.0.0",
+  "description": "HA KODI Integration into Netflix",
+
+  "options_page": "options.html",
+	
+  "permissions": [ "storage" ],
+
+  "content_scripts": [{
+    "js": ["content.js"],
+    "matches": ["https://www.netflix.com/*"]
+  }],
+  
+  "web_accessible_resources": [
+	"script.js",
+    "kodi.html",
+    "img/tv-256.png",
+    "img/windows8-256.png"
+	]
+}

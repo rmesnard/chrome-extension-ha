@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head><title>HomeAssistant Chrome Extension Settings</title></head>
+<body>
+
+Home Assistant
+
+<label>
+  Server URL <input type="text" id="HA_IP">
+</label>
+
+<label>
+  Client ID <input type="text" id="HA_MYID">
+</label>
+
+
+MQTT
+
+<label>
+  MQTT Server IP <input type="text" id="MQTT_IP">
+</label>
+
+<label>
+  MQTT  Server Port <input type="text" id="MQTT_PORT">
+</label>
+
+<label>
+  MQTT Topic Info <input type="text" id="MQTT_TOPIC_INFO">
+</label>
+
+<label>
+  MQTT Topic Alert <input type="text" id="MQTT_TOPIC_ALERT">
+</label>
+
+
+Kodi
+
+<label>
+  Enable Kodi Shortcut <input type="checkbox" id="KODI_SHORT">
+</label>
+
+<div id="status"></div>
+<button id="save">Save</button>
+
+<script src="options.js"></script>
+</body>
+</html>
