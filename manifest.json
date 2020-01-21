@@ -5,7 +5,10 @@
   "version": "1.0.0",
   "description": "HA KODI Integration into Netflix",
 
-  "options_page": "options.html",
+	"options_ui": {
+		"page": "options.html",
+		"chrome_style": true
+	},
 	
   "permissions": [ "storage" ],
 
@@ -22,7 +25,11 @@
   
   "web_accessible_resources": [
     "kodi.html",
+	"netflix.js",
     "img/tv-256.png",
-    "img/windows8-256.png"
+    "img/windows8-256.png",
+	"img/comments-48.png",
+	"img/appointment_reminders-48.png",
+	"img/error-48.png"
 	]
 }
