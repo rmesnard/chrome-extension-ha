@@ -22,10 +22,16 @@
     "js": ["content.js"],
     "matches": ["https://www.netflix.com/*"]
   }],
+ 
+  "externally_connectable": {
+  "matches": ["https://www.netflix.com/*"]
+	},
   
   "web_accessible_resources": [
     "kodi.html",
 	"netflix.js",
+	"HAmqtt.js",
+	"lib/mqttws31.js",
     "img/tv-256.png",
     "img/windows8-256.png",
 	"img/comments-yellow.png",

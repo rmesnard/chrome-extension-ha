@@ -1,6 +1,4 @@
-
-console.log("netflix run");
-
+console.log("netflix js run");
 
 function patchHeader() {
 	var browsehead = document.body.querySelector('div.pinning-header-container');
@@ -19,9 +17,10 @@ function patchHeader() {
 			newinnerHTML += '<a href="'+urlkodi+'"><img src="'+urlicotv+'" style="margin: 10px 0px 10px 40px;width: 50px;height: 50px;"/></a>';
 
 		var newmessageHTML = '<div  id="HA_iconmessage" style="top: 0px;left: 200px;position: absolute;display: none;"><img src="'+urlicomsg+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
-		newmessageHTML += '<div  id="HA_iconmessage" style="top: 0px;left: 200px;position: absolute;"><img src="'+urlicoalert+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
-		newmessageHTML += '<div id="HA_message" style="top: 20px;left: 400px;position: absolute;font-size: 1.6vw;font-family: \'Netflix Sans\', \'Helvetica Neue\', Helvetica, Arial, sans-serif">Message de test</div> ';
-		newmessageHTML += '<div id="HA_horloge" style="top: 20px;right: 40px;position: absolute;font-size: 2vw;font-family: \'Netflix Sans\', \'Helvetica Neue\', Helvetica, Arial, sans-serif">00:00</div> ';
+		newmessageHTML += '<div id="HA_icoalert"  style="top: 0px;left: 200px;position: absolute;display: none;"><img src="'+urlicoalert+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
+		newmessageHTML += '<div id="HA_icoalarm"  style="top: 0px;left: 200px;position: absolute;display: none;"><img src="'+urlicoring+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
+		newmessageHTML += '<div id="HA_message" style="top: 20px;left: 400px;position: absolute;font-size: 1.6vw;font-family: \'Netflix Sans\', \'Helvetica Neue\', Helvetica, Arial, sans-serif"></div> ';
+		newmessageHTML += '<div id="HA_horloge" style="top: 0px;right: 40px;position: absolute;font-size: 2.5vw;font-weight: bold;font-family: \'Netflix Sans\', \'Helvetica Neue\', Helvetica, Arial, sans-serif">00:00</div> ';
 
 
 		browsehead.innerHTML = newinnerHTML + '</div>' + newmessageHTML + browsehead.innerHTML ;	
@@ -45,9 +44,6 @@ document.addEventListener("click", function( event ) {
    }
 });
 
-
-patchHeader();
-
 function horloge(el) {
   if(typeof el=="string") { el = document.getElementById(el); }
   function actualiser() {
@@ -60,5 +56,12 @@ function horloge(el) {
   setInterval(actualiser,30000);
 };
 
+
+// Display Header
+patchHeader();
+// Display Clock
 horloge('HA_horloge');
+
+
+		
 
