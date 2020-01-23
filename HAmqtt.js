@@ -1,15 +1,21 @@
 
 var mqtt;
-var reconnectTimeout = 2000;
+var reconnectTimeout = 4000;
 var mqtt_message_enabled = [false,false,false,false,false,false,false,false,false,false];
 var mqtt_message_type = ["","","","","","","","","",""];
 var mqtt_message_text = ["","","","","","","","","",""];
 var mqtt_message_id = ["","","","","","","","","",""];
 var mqtt_current_idx = -1;
+var mqtt_error_count = 20;
 
 function onFailure(message) {
 	console.log("Connection Attempt to Host "+g_MQTT_IP+" Failed");
-	setTimeout(MQTTconnect, reconnectTimeout);
+	mqtt_error_count--;
+	
+	if ( mqtt_error_count == 0)
+		addmessage("alert","Disconnected from Server","000000");
+	else
+		setTimeout(MQTTconnect, reconnectTimeout);
 }
 function onMessageArrived(msg){
 //	out_msg="Message received "+msg.payloadString+"<br>";
@@ -31,7 +37,11 @@ function onMessageArrived(msg){
 
 function onConnectionLost(){
 	console.log("connection lost");
-	setTimeout(MQTTconnect, reconnectTimeout);
+	mqtt_error_count--;
+	if ( mqtt_error_count == 0)
+		addmessage("alert","Disconnected from Server","000000");
+	else	
+		setTimeout(MQTTconnect, reconnectTimeout);
 }
 	
 function onConnect() {

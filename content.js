@@ -6,12 +6,12 @@ chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
 	var urlextension = chrome.extension.getURL("");
 	console.log(urlextension);
 
-	var script = document.createElement('script');
-	script.src = chrome.extension.getURL('lib/mqttws31.js');
-	script.onload = function() { this.remove(); };
-	(document.head || document.documentElement).appendChild(script);	
+	var script1 = document.createElement('script');
+	script1.src = chrome.extension.getURL('lib/mqttws31.js');
+	script1.onload = function() { this.remove(); };
+	(document.head || document.documentElement).appendChild(script1);	
 
-	script = document.createElement('script');
+	var script2 = document.createElement('script');
 	
 	var actualCode = 'g_urlextension = "'+urlextension+'";';
 	actualCode += 'g_enablekodi = "'+response.KODI_SHORT+'";';
@@ -24,20 +24,18 @@ chrome.runtime.sendMessage({method: "getOptions"}, function(response) {
 	actualCode += 'g_MQTT_TOPIC_COMMAND = "'+response.MQTT_TOPIC_COMMAND+'";';
 	actualCode += 'g_UI_MESSAGE_TIME = parseInt("'+response.UI_MESSAGE_TIME+'");';
 	
-	script.textContent = actualCode;
-	(document.head||document.documentElement).appendChild(script);
-	script.remove();
+	script2.textContent = actualCode;
+	(document.head||document.documentElement).appendChild(script2);
+	script2.remove();
 
-	script = document.createElement('script');
-	script.src = chrome.extension.getURL('HAmqtt.js');
-	script.onload = function() { this.remove(); };
-	(document.head || document.documentElement).appendChild(script);	
+	var script3 = document.createElement('script');
+	script3.src = chrome.extension.getURL('HAmqtt.js');
+	script3.onload = function() { this.remove(); };
+	(document.head || document.documentElement).appendChild(script3);	
 	
-	script = document.createElement('script');
-	script.src = chrome.extension.getURL('netflix.js');
-	script.onload = function() { this.remove(); };
-	(document.head || document.documentElement).appendChild(script);	
-
-
+	var script4 = document.createElement('script');
+	script4.src = chrome.extension.getURL('netflix.js');
+	script4.onload = function() { this.remove(); };
+	(document.head || document.documentElement).appendChild(script4);	
 
 });
