@@ -46,9 +46,28 @@ function addOverlay() {
 		overlayHTML.innerHTML = newinnerHTML + overlayHTML.innerHTML;
 	} 
  
+
+	var overlayVideo = document.body.querySelector('div.controls-full-hit-zone'); 
+ 
+	if ( overlayVideo != undefined ) {
+
+		var urlicomsg = g_urlextension + "img/comments-yellow.png";
+		var urlicoalert = g_urlextension + "img/error-red.png";
+		var urlicoring = g_urlextension + "img/appointment_reminders-blue.png";
+
+		var newinnerHTML = '<div  id="HA_iconmessage" style="top: 0px;left: 200px;position: absolute;display: none;z-index: 10;"><img src="'+urlicomsg+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
+		newinnerHTML += '<div id="HA_icoalert"  style="top: 0px;left: 200px;position: absolute;z-index: 10;"><img src="'+urlicoalert+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
+		newinnerHTML += '<div id="HA_icoalarm"  style="top: 0px;left: 200px;position: absolute;display: none;z-index: 10;"><img src="'+urlicoring+'" style="margin: 10px 10px 10px 100px;width: 50px;height: 50px;"/></div> ';
+		newinnerHTML += '<div id="HA_message" style="top: 20px;left: 400px;position: absolute;font-size: 1.6vw;font-family: \'Netflix Sans\', \'Helvetica Neue\', Helvetica, Arial, sans-serif;z-index: 10;"></div> ';
+
+		//overlayHTML.innerHTML = newmessageHTML + overlayHTML.innerHTML ;	
+		overlayVideo.innerHTML = newinnerHTML + overlayVideo.innerHTML;
+	} 
+ 
 }
 
 document.addEventListener("click", function( event ) {
+	
   
   var itemclicked = event.target.attributes.getNamedItem('data-uia');
    if ( itemclicked != undefined )
@@ -56,9 +75,14 @@ document.addEventListener("click", function( event ) {
 	if ( itemclicked.value == "nfplayer-exit" )
 	{
 		console.log("player exit");
-		addHeader();
+		// reload header
+		setTimeout(addHeader, 1000); // wait  1 sec to load
  	}
    }
+   else
+	setTimeout(addOverlay, 2000); // wait  1 sec to load
+  
+  
 });
 
 function horloge(el) {
